@@ -75,14 +75,14 @@ namespace Tellurium.StableElements
 
         public T ExecuteSafe<T>(Func<IWebElement, T> action)
         {
-            T result = default(T);
+            T result = default(T)!;
             Execute(() => result =  action(element));
             return result;
         }
 
         private T Execute<T>(Func<T> function)
         {
-            T result = default (T);
+            T result = default (T)!;
             Execute(() => { result = function(); });
             return result;
         }

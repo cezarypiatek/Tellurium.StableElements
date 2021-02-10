@@ -23,7 +23,7 @@ namespace Tellurium.StableElements
         /// </summary>
         /// <param name="scope">Searching scope</param>
         /// <param name="locator">Expected element locator</param>
-        public static IStableWebElement TryFindStableElement(this ISearchContext scope, By locator)
+        public static IStableWebElement? TryFindStableElement(this ISearchContext scope, By locator)
         {
             var element = scope.TryFindElement(locator);
             if (element == null) return null;

@@ -9,7 +9,7 @@ namespace Tellurium.StableElements
 
         public ISearchContext Context { get; }
 
-        public CannotFindElementByException(By @by, ISearchContext context, Exception originalException = null)
+        public CannotFindElementByException(By @by, ISearchContext context, Exception? originalException = null)
             :base($"Cannot find element {by} inside {context.GetElementDescription()}", originalException)
         {
             By = @by;

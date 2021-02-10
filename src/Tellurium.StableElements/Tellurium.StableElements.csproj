@@ -4,6 +4,7 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>Cezary Piątek</Authors>
     <LangVersion>8.0</LangVersion>
+    <Nullable>enable</Nullable>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageIcon>TelluriumLogo128x128.png</PackageIcon>
     <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>

@@ -13,7 +13,7 @@ namespace Tellurium.StableElements
         }
 
 
-        public static IWebElement TryFindElement(this ISearchContext context, By by)
+        public static IWebElement? TryFindElement(this ISearchContext context, By by)
         {
             try
             {
@@ -36,12 +36,12 @@ namespace Tellurium.StableElements
             return foundElement;
         }
 
-        private static bool IsElementAccessible(this IWebElement element)
+        private static bool IsElementAccessible(this IWebElement? element)
         {
             return element != null && element.Displayed && element.Enabled;
         }
 
-        private static IWebElement FirstAccessibleOrDefault(this ReadOnlyCollection<IWebElement> elements)
+        private static IWebElement? FirstAccessibleOrDefault(this ReadOnlyCollection<IWebElement> elements)
         {
             return elements.FirstOrDefault(element =>
             {

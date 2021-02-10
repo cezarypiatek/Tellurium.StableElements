@@ -11,7 +11,7 @@ namespace Tellurium.StableElements
 
         public IReadOnlyList<IWebElement> Candidates { get; }
 
-        public CannotFindAccessibleElementByException(By @by, ISearchContext context, IReadOnlyList<IWebElement> candidates, Exception originalException = null) 
+        public CannotFindAccessibleElementByException(By @by, ISearchContext context, IReadOnlyList<IWebElement> candidates, Exception? originalException = null) 
             : base(@by, context, originalException)
         {
             Candidates = candidates;
@@ -22,7 +22,7 @@ namespace Tellurium.StableElements
         {
             get
             {
-                if (Candidates == null || Candidates.Count == 0)
+                if (Candidates.Count == 0)
                 {
                     return base.Message;
                 }
@@ -32,7 +32,7 @@ namespace Tellurium.StableElements
 
         private List<string> GetCandidatesDescriptions()
         {
-            return Candidates?.Select(x=>
+            return Candidates.Select(x=>
             {
                 try
                 {
@@ -43,7 +43,7 @@ namespace Tellurium.StableElements
                     return null;
                 }
                     
-            }).Where(x=> string.IsNullOrWhiteSpace(x) == false).ToList();
+            }).OfType<string>().ToList();
         }
     }
 }
