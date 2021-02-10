@@ -18,8 +18,6 @@ jobs:
         SourceRevisionId: '${{ github.sha }}'        
         Configuration: Release
         SolutionPath: src\Tellurium.StableElements.sln
-        ContinuousIntegrationBuild: true
-        EmbedUntrackedSources: true
         PackageReleaseNotes: 'https://github.com/${{ github.repository }}/releases'
     steps:
     - uses: actions/checkout@v2   
