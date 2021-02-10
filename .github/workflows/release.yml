@@ -3,9 +3,6 @@ on:
   push:
     branches:
       - main
-    paths:
-      - 'src/**'
-      - '!src/.editorconfig'
 jobs:
   build-extension:
     runs-on: windows-latest
@@ -51,8 +48,9 @@ jobs:
       run: dotnet test --no-build --verbosity normal $env:SolutionPath   
     - name: Generate release note
       run: |
-        git fetch --prune --unshallow
+        git fetch --prune
         $commitLog = git log "$(git describe --tags --abbrev=0)..HEAD" --pretty=format:"- %s"
+        $commitLog = if([string]::IsNullOrWhitespace($commitLog)){git log --pretty=format:"- %s"}else{$commitLog}
         "What's new: `r`n`r`n$([string]::Join("`r`n",$commitLog))" | Out-File release_note.md -Encoding utf8
     - name: Create Github Release
       id: create_release
