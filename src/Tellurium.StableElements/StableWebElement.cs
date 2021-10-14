@@ -120,8 +120,12 @@ namespace Tellurium.StableElements
         public void Submit() => Execute(() => element.Submit());
         public void Click() => Execute(() => element.Click());
         public string GetAttribute(string attributeName) => Execute(() => element.GetAttribute(attributeName));
+        public string GetDomAttribute(string attributeName)=> Execute(() => element.GetDomAttribute(attributeName));
+        [Obsolete("Use the GetDomProperty method instead.")]
         public string GetProperty(string propertyName) => Execute(() => element.GetProperty(propertyName));
+        public string GetDomProperty(string propertyName) => Execute(() =>element.GetDomProperty(propertyName));
         public string GetCssValue(string propertyName) => Execute(() => element.GetCssValue(propertyName));
+        public ISearchContext GetShadowRoot() => Execute(() =>element.GetShadowRoot());
         public string TagName => Execute(() => element.TagName);
         public string Text => Execute(() => element.Text);
         public bool Enabled => Execute(() => element.Enabled);
